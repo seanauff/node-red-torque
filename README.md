@@ -9,6 +9,8 @@ A Node-RED flow for capturing data sent from the Torque OBDII app and creating a
 
 2. node-red-contrib-moment. This parses the `session` field into a human readable date.
 
+3. Torque app, either free or paid (limitations of free described below), and a suitable OBD2 reader.
+
 ### Optional
 
 1. MQTT Broker for sending messages out.
