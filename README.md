@@ -1,13 +1,15 @@
 # node-red-torque
 A Node-RED flow for capturing data sent from the Torque OBDII app and creating a formatted JSON message. Example configuration provided for storing the data in an InfluxDB database via MQTT sent to telegraf.
 
-## Required Dependencies
+## Dependencies
+
+### Required
 
 1. Node-RED. I run via Docker using the latest official image.
 
 2. node-red-contrib-moment. This parses the `session` field into a human readable date.
 
-## Optional Dependencies
+### Optional
 
 1. MQTT Broker for sending messages out.
 
@@ -19,6 +21,8 @@ A Node-RED flow for capturing data sent from the Torque OBDII app and creating a
 
 ## Installation
 
+### Server Setup
+
 1. Import the contents of flow.json into a new flow in Node-RED.
 
 2. Change the output TZ of the "Date/Time Formatter" node.
@@ -27,6 +31,8 @@ A Node-RED flow for capturing data sent from the Torque OBDII app and creating a
 
 4. Add the telegraf example to your telegraf config, changing the parameters to connect to your MQTT broker.
 
-## Torque App Setup
+### Torque App Setup
+
+
 
 ## Security Considerations
