@@ -1,5 +1,5 @@
 # node-red-torque
-A Node-RED flow for capturing data sent from the Torque OBDII app and creating a formatted JSON message. Example configuration provided for storing the data in an InfluxDB database via MQTT sent to telegraf.
+A Node-RED flow for capturing data sent from the Torque OBDII app and creating a formatted JSON message. Example configuration provided for storing the data in an InfluxDB database via MQTT sent to Telegraf.
 
 ## Dependencies
 
@@ -31,13 +31,13 @@ A Node-RED flow for capturing data sent from the Torque OBDII app and creating a
 
 4. Set the correct parameters for your MQTT broker in the MQTT output node.
 
-5. Add the telegraf example to your telegraf config, changing the parameters to connect to your MQTT broker.
+5. Add the Telegraf example to your Telegraf config, changing the parameters to connect to your MQTT broker.
 
 ### Torque App Setup
 
-This works with both the paid and free versions of Torque. The free version is limited to 6 PIDs reporting simultaneously, and has no good way to identify seperate vehicles. For either version:
+This works with both the paid and free versions of Torque. The free version is limited to 6 PIDs reporting simultaneously, and has no good way to identify separate vehicles. For either version:
 
-1. Nagivate to the app settings and enable "Upload to webserver".
+1. Navigate to the app settings and enable "Upload to webserver".
 
 2. Enter the address of your Node-RED instance in the webserver URL field. Default is `http://<ip address>:<port>/upload`. This will change due to reverse proxy settings, domain names, dynamic DNS, etc.
 
@@ -47,8 +47,8 @@ This works with both the paid and free versions of Torque. The free version is l
 
 ## Security Considerations
 
-The Torque app does not support sending data over HTTPS, so HTTPS access to your Node-RED server, either directly or via reverse proxy  will not work. The data sent by Torque potentailly contains sensitive data, such as GPS coordinates. This is low risk when sending data across a private netowrk, but in order to upload real-time data to your server while not on the same network (i.e. driving in your car), you must either:
+The Torque app does not support sending data over HTTPS, so HTTPS access to your Node-RED server, either directly or via reverse proxy will not work. The data sent by Torque potentially contains sensitive data, such as GPS coordinates. This is low risk when sending data across a private network, but in order to upload real-time data to your server while not on the same network (i.e. driving in your car), you must either:
 
-* Expose your Node-RED HTTP endpoint to the internet, using port forwarding/reverse proxy (Not reccomended). 
+* Expose your Node-RED HTTP endpoint to the internet, using port forwarding/reverse proxy (Not recommended). 
 
-* Use a VPN to create a secure connection to the network that has your your server.
+* Use a VPN to create a secure connection to the network that has your server.
