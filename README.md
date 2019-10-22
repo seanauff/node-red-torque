@@ -43,7 +43,7 @@ This works with both the paid and free versions of Torque. The free version is l
 
 3. Select which PIDs to log.
 
-4. If using the paid version of Torque, enter a descriptive name for your vehicle in the "User Email Address" field. This information is parsed and used as the metric name in the Telegraf/InfluxDB example. It is the only way I have found to differentiate multiple vehicles. The free version of Torque does not send this field, so all data received is stored under the same metric: `liteVersion`.
+4. If using the paid version of Torque, enter a descriptive name for your vehicle in the "User Email Address" field. This information is parsed and used as the metric name in the Telegraf/InfluxDB example. It is the only way I have found to differentiate multiple vehicles, and must be changed manually when switching vehicles and keeping the same android device. The free version of Torque does not send this field, so all data received is stored under the same metric: `liteVersion`.
 
 ## Security Considerations
 
