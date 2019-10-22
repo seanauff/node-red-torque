@@ -1,0 +1,1510 @@
+[
+    {
+        "id": "1051da59.797066",
+        "type": "tab",
+        "label": "Torque",
+        "disabled": false,
+        "info": ""
+    },
+    {
+        "id": "6d632dc8.c3b994",
+        "type": "http in",
+        "z": "1051da59.797066",
+        "name": "",
+        "url": "/upload",
+        "method": "get",
+        "upload": true,
+        "swaggerDoc": "",
+        "x": 130,
+        "y": 60,
+        "wires": [
+            [
+                "cf272a44.fc08b"
+            ]
+        ]
+    },
+    {
+        "id": "d3c7f0f6.360e",
+        "type": "http response",
+        "z": "1051da59.797066",
+        "name": "http response OK!",
+        "statusCode": "200",
+        "headers": {
+            "OK!": ""
+        },
+        "x": 510,
+        "y": 40,
+        "wires": []
+    },
+    {
+        "id": "8b6d2f73.79c94",
+        "type": "json",
+        "z": "1051da59.797066",
+        "name": "",
+        "property": "payload",
+        "action": "obj",
+        "pretty": false,
+        "x": 410,
+        "y": 160,
+        "wires": [
+            [
+                "ad29e8dd.74e438",
+                "d70fbc90.23d5c"
+            ]
+        ]
+    },
+    {
+        "id": "ad29e8dd.74e438",
+        "type": "change",
+        "z": "1051da59.797066",
+        "name": "",
+        "rules": [
+            {
+                "t": "set",
+                "p": "topic",
+                "pt": "msg",
+                "to": "torque/raw",
+                "tot": "str"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 770,
+        "y": 160,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "b043ff20.449ac8",
+        "type": "debug",
+        "z": "1051da59.797066",
+        "name": "",
+        "active": true,
+        "tosidebar": false,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "x": 750,
+        "y": 80,
+        "wires": []
+    },
+    {
+        "id": "ffec7c10.fa3d6",
+        "type": "mqtt out",
+        "z": "1051da59.797066",
+        "name": "",
+        "topic": "",
+        "qos": "",
+        "retain": "",
+        "broker": "56a849d2.194a68",
+        "x": 1570,
+        "y": 160,
+        "wires": []
+    },
+    {
+        "id": "52b74919.1194b8",
+        "type": "function",
+        "z": "1051da59.797066",
+        "name": "str2num",
+        "func": "msg.payload.time = parseInt(msg.payload.time);\nmsg.payload.MAFR = parseFloat(msg.payload.MAFR);\nmsg.payload.throttlePosManifold = parseFloat(msg.payload.throttlePosManifold);\n//msg.payload.airStatus = parseFloat(msg.payload.airStatus);\nmsg.payload.fuelTrimBank1Sensor1 = parseFloat(msg.payload.fuelTrimBank1Sensor1);\nmsg.payload.fuelTrimBank1Sensor2 = parseFloat(msg.payload.fuelTrimBank1Sensor2);\nmsg.payload.fuelTrimBank1Sensor3 = parseFloat(msg.payload.fuelTrimBank1Sensor3);\nmsg.payload.fuelTrimBank1Sensor4 = parseFloat(msg.payload.fuelTrimBank1Sensor4);\nmsg.payload.fuelTrimBank2Sensor1 = parseFloat(msg.payload.fuelTrimBank2Sensor1);\nmsg.payload.fuelTrimBank2Sensor2 = parseFloat(msg.payload.fuelTrimBank2Sensor2);\nmsg.payload.fuelTrimBank2Sensor3 = parseFloat(msg.payload.fuelTrimBank2Sensor3);\nmsg.payload.fuelTrimBank2Sensor4 = parseFloat(msg.payload.fuelTrimBank2Sensor4);\nmsg.payload.runTime = parseFloat(msg.payload.runTime);\nmsg.payload.distTraveledWithCELLit = parseFloat(msg.payload.distTraveledWithCELLit);\nmsg.payload.fuelRailPressureManifoldVacuumRelative = parseFloat(msg.payload.fuelRailPressureManifoldVacuumRelative);\nmsg.payload.fuelRailPressure = parseFloat(msg.payload.fuelRailPressure);\nmsg.payload.O2SensorEquivalenceRatio1 = parseFloat(msg.payload.O2SensorEquivalenceRatio1);\nmsg.payload.O2SensorEquivalenceRatio2 = parseFloat(msg.payload.O2SensorEquivalenceRatio2);\nmsg.payload.O2SensorEquivalenceRatio3 = parseFloat(msg.payload.O2SensorEquivalenceRatio3);\nmsg.payload.O2SensorEquivalenceRatio4 = parseFloat(msg.payload.O2SensorEquivalenceRatio4);\nmsg.payload.O2SensorEquivalenceRatio5 = parseFloat(msg.payload.O2SensorEquivalenceRatio5);\nmsg.payload.O2SensorEquivalenceRatio6 = parseFloat(msg.payload.O2SensorEquivalenceRatio6);\nmsg.payload.O2SensorEquivalenceRatio7 = parseFloat(msg.payload.O2SensorEquivalenceRatio7);\nmsg.payload.O2SensorEquivalenceRatio8 = parseFloat(msg.payload.O2SensorEquivalenceRatio8);\nmsg.payload.EGRCommanded = parseFloat(msg.payload.EGRCommanded);\nmsg.payload.EGRError = parseFloat(msg.payload.EGRError);\nmsg.payload.fuelLevelFromECU = parseFloat(msg.payload.fuelLevelFromECU);\n//msg.payload.fuelStatus = parseFloat(msg.payload.fuelStatus);\nmsg.payload.distTraveledSinceCodesCleared = parseFloat(msg.payload.distTraveledSinceCodesCleared);\nmsg.payload.evapSysVaporPressure = parseFloat(msg.payload.evapSysVaporPressure);\nmsg.payload.barometerVehicle = parseFloat(msg.payload.barometerVehicle);\nmsg.payload.O2SensorEquivalenceRatioAlternate1 = parseFloat(msg.payload.O2SensorEquivalenceRatioAlternate1);\nmsg.payload.catalystTempBank1Sensor1 = parseFloat(msg.payload.catalystTempBank1Sensor1);\nmsg.payload.catalystTempBank2Sensor1 = parseFloat(msg.payload.catalystTempBank2Sensor1);\nmsg.payload.catalystTempBank1Sensor2 = parseFloat(msg.payload.catalystTempBank1Sensor2);\nmsg.payload.catalystTempBank2Sensor2 = parseFloat(msg.payload.catalystTempBank2Sensor2);\nmsg.payload.engineLoad = parseFloat(msg.payload.engineLoad);\nmsg.payload.voltageControlModule = parseFloat(msg.payload.voltageControlModule);\nmsg.payload.engineLoadAbsolute = parseFloat(msg.payload.engineLoadAbsolute);\nmsg.payload.commandedEquivalenceRatioLambda = parseFloat(msg.payload.commandedEquivalenceRatioLambda);\nmsg.payload.throttlePositionRelative = parseFloat(msg.payload.throttlePositionRelative);\nmsg.payload.ambientAirTemp = parseFloat(msg.payload.ambientAirTemp);\nmsg.payload.throttlePositionAbsoluteB = parseFloat(msg.payload.throttlePositionAbsoluteB);\nmsg.payload.acceleratorPedalPositionD = parseFloat(msg.payload.acceleratorPedalPositionD);\nmsg.payload.acceleratorPedalPositionE = parseFloat(msg.payload.acceleratorPedalPositionE);\nmsg.payload.acceleratorPedalPositionF = parseFloat(msg.payload.acceleratorPedalPositionF);\nmsg.payload.engineCoolantTemp = parseFloat(msg.payload.engineCoolantTemp);\nmsg.payload.acceleratorPedalPositionRelative = parseFloat(msg.payload.acceleratorPedalPositionRelative);\nmsg.payload.ethanolFuelPercent = parseFloat(msg.payload.ethanolFuelPercent);\nmsg.payload.relativeAcceleratorPedalPosition = parseFloat(msg.payload.relativeAcceleratorPedalPosition);\nmsg.payload.hybridBatteryCharge = parseFloat(msg.payload.hybridBatteryCharge);\nmsg.payload.engineOilTemp = parseFloat(msg.payload.engineOilTemp);\nmsg.payload.fuelTrimShortTermbank1 = parseFloat(msg.payload.fuelTrimShortTermbank1);\nmsg.payload.torqueDemanded = parseFloat(msg.payload.torqueDemanded);\nmsg.payload.torqueActual = parseFloat(msg.payload.torqueActual);\nmsg.payload.torqueReference = parseFloat(msg.payload.torqueReference);\nmsg.payload.fuelTrimLongTermBank1 = parseFloat(msg.payload.fuelTrimLongTermBank1);\nmsg.payload.turboPressureControl = parseFloat(msg.payload.turboPressureControl);\nmsg.payload.exhaustPressure = parseFloat(msg.payload.exhaustPressure);\nmsg.payload.chargeAirCoolerTemp = parseFloat(msg.payload.chargeAirCoolerTemp);\nmsg.payload.exhaustGasTempBank1Sensor1 = parseFloat(msg.payload.exhaustGasTempBank1Sensor1);\nmsg.payload.exhaustGasTempBank2Sensor1 = parseFloat(msg.payload.exhaustGasTempBank2Sensor1);\nmsg.payload.DPFPressure = parseFloat(msg.payload.DPFPressure);\nmsg.payload.DPFTemp = parseFloat(msg.payload.DPFTemp);\nmsg.payload.fuelTrimShortTermBank2 = parseFloat(msg.payload.fuelTrimShortTermBank2);\nmsg.payload.NOxPreSCR = parseFloat(msg.payload.NOxPreSCR);\nmsg.payload.fuelTrimLongTermBank2 = parseFloat(msg.payload.fuelTrimLongTermBank2);\nmsg.payload.fuelPressure = parseFloat(msg.payload.fuelPressure);\nmsg.payload.intakeManifoldPressure = parseFloat(msg.payload.intakeManifoldPressure);\nmsg.payload.transmissionTempMethod2 = parseFloat(msg.payload.transmissionTempMethod2);\nmsg.payload.engineRPM = parseFloat(msg.payload.engineRPM);\nmsg.payload.speedOBD = parseFloat(msg.payload.speedOBD);\nmsg.payload.timingAdvance = parseFloat(msg.payload.timingAdvance);\nmsg.payload.intakeAirTemp = parseFloat(msg.payload.intakeAirTemp);\nmsg.payload.transmissionTempMethod1 = parseFloat(msg.payload.transmissionTempMethod1);\nmsg.payload.GPSSpeed = parseFloat(msg.payload.GPSSpeed);\nmsg.payload.GPSLongitude = parseFloat(msg.payload.GPSLongitude);\nmsg.payload.GPSLatitude = parseFloat(msg.payload.GPSLatitude);\nmsg.payload.GPSBearing1 = parseFloat(msg.payload.GPSBearing1);\nmsg.payload.GPSAltitude = parseFloat(msg.payload.GPSAltitude);\nmsg.payload.MPGInstant = parseFloat(msg.payload.MPGInstant);\nmsg.payload.turboBoostandVac = parseFloat(msg.payload.turboBoostandVac);\nmsg.payload.KPLInstant = parseFloat(msg.payload.KPLInstant);\nmsg.payload.tripDistance = parseFloat(msg.payload.tripDistance);\nmsg.payload.MPGtripAvg = parseFloat(msg.payload.MPGtripAvg);\nmsg.payload.KPLtripAvg = parseFloat(msg.payload.KPLtripAvg);\nmsg.payload.LP100KMInstant = parseFloat(msg.payload.LP100KMInstant);\nmsg.payload.LP100KMtripAvg = parseFloat(msg.payload.LP100KMtripAvg);\nmsg.payload.tripDistanceVehicleProfile = parseFloat(msg.payload.tripDistanceVehicleProfile);\nmsg.payload.O2VoltsBank1Sensor1 = parseFloat(msg.payload.O2VoltsBank1Sensor1);\nmsg.payload.O2VoltsBank1Sensor2 = parseFloat(msg.payload.O2VoltsBank1Sensor2);\nmsg.payload.O2VoltsBank1Sensor3 = parseFloat(msg.payload.O2VoltsBank1Sensor3);\nmsg.payload.O2VoltsBank1Sensor4 = parseFloat(msg.payload.O2VoltsBank1Sensor4);\nmsg.payload.O2VoltsBank2Sensor1 = parseFloat(msg.payload.O2VoltsBank2Sensor1);\nmsg.payload.O2VoltsBank2Sensor2 = parseFloat(msg.payload.O2VoltsBank2Sensor2);\nmsg.payload.O2VoltsBank2Sensor3 = parseFloat(msg.payload.O2VoltsBank2Sensor3);\nmsg.payload.O2VoltsBank2Sensor4 = parseFloat(msg.payload.O2VoltsBank2Sensor4);\nmsg.payload.accelerationX = parseFloat(msg.payload.accelerationX);\nmsg.payload.accelerationY = parseFloat(msg.payload.accelerationY);\nmsg.payload.accelerationZ = parseFloat(msg.payload.accelerationZ);\nmsg.payload.accelerationTot = parseFloat(msg.payload.accelerationTot);\nmsg.payload.torqueCalculated = parseFloat(msg.payload.torqueCalculated);\nmsg.payload.horsepowerWheels = parseFloat(msg.payload.horsepowerWheels);\nmsg.payload.timerFrom0to60mph = parseFloat(msg.payload.timerFrom0to60mph);\nmsg.payload.timerFrom0to100kph = parseFloat(msg.payload.timerFrom0to100kph);\nmsg.payload.timerQuarterMile = parseFloat(msg.payload.timerQuarterMile);\nmsg.payload.timerEighthMile = parseFloat(msg.payload.timerEighthMile);\nmsg.payload.GPSvsOBDSpeedDiff = parseFloat(msg.payload.GPSvsOBDSpeedDiff);\nmsg.payload.voltageOBDAdapter = parseFloat(msg.payload.voltageOBDAdapter);\nmsg.payload.GPSAccuracy = parseFloat(msg.payload.GPSAccuracy);\nmsg.payload.GPSSatellites = parseFloat(msg.payload.GPSSatellites);\nmsg.payload.GPSBearing2 = parseFloat(msg.payload.GPSBearing2);\nmsg.payload.O2VoltsWideRangeSensor1 = parseFloat(msg.payload.O2VoltsWideRangeSensor1);\nmsg.payload.O2VoltsWideRangeSensor2 = parseFloat(msg.payload.O2VoltsWideRangeSensor2);\nmsg.payload.O2VoltsWideRangeSensor3 = parseFloat(msg.payload.O2VoltsWideRangeSensor3);\nmsg.payload.O2VoltsWideRangeSensor4 = parseFloat(msg.payload.O2VoltsWideRangeSensor4);\nmsg.payload.O2VoltsWideRangeSensor5 = parseFloat(msg.payload.O2VoltsWideRangeSensor5);\nmsg.payload.O2VoltsWideRangeSensor6 = parseFloat(msg.payload.O2VoltsWideRangeSensor6);\nmsg.payload.O2VoltsWideRangeSensor7 = parseFloat(msg.payload.O2VoltsWideRangeSensor7);\nmsg.payload.O2VoltsWideRangeSensor8 = parseFloat(msg.payload.O2VoltsWideRangeSensor8);\nmsg.payload.airFuelRatioMeasured = parseFloat(msg.payload.airFuelRatioMeasured);\nmsg.payload.tiltX = parseFloat(msg.payload.tiltX);\nmsg.payload.tiltY = parseFloat(msg.payload.tiltY);\nmsg.payload.tiltZ = parseFloat(msg.payload.tiltZ);\nmsg.payload.airFuelRatioCommanded = parseFloat(msg.payload.airFuelRatioCommanded);\nmsg.payload.timerFrom0to200kph = parseFloat(msg.payload.timerFrom0to200kph);\nmsg.payload.CO2Instant = parseFloat(msg.payload.CO2Instant);\nmsg.payload.CO2Avg = parseFloat(msg.payload.CO2Avg);\nmsg.payload.fuelFlowRatePerMin = parseFloat(msg.payload.fuelFlowRatePerMin);\nmsg.payload.fuelCostTrip = parseFloat(msg.payload.fuelCostTrip);\nmsg.payload.fuelFlowRatePerHour = parseFloat(msg.payload.fuelFlowRatePerHour);\nmsg.payload.timerFrom60to120mph = parseFloat(msg.payload.timerFrom60to120mph);\nmsg.payload.timerFrom60to80mph = parseFloat(msg.payload.timerFrom60to80mph);\nmsg.payload.timerFrom40to60mph = parseFloat(msg.payload.timerFrom40to60mph);\nmsg.payload.timerFrom80to100mph = parseFloat(msg.payload.timerFrom80to100mph);\nmsg.payload.tripSpeedAvgWhileMoving = parseFloat(msg.payload.tripSpeedAvgWhileMoving);\nmsg.payload.timerFrom100to0kph = parseFloat(msg.payload.timerFrom100to0kph);\nmsg.payload.timerFrom60to0mph = parseFloat(msg.payload.timerFrom60to0mph);\nmsg.payload.timerSinceJourneyStart = parseFloat(msg.payload.timerSinceJourneyStart);\nmsg.payload.timerStationary = parseFloat(msg.payload.timerStationary);\nmsg.payload.timerMoving = parseFloat(msg.payload.timerMoving);\nmsg.payload.volumetricEfficiencyCalculated = parseFloat(msg.payload.volumetricEfficiencyCalculated);\nmsg.payload.distanceToEmptyCalculated = parseFloat(msg.payload.distanceToEmptyCalculated);\nmsg.payload.fuelRemainingCalculated = parseFloat(msg.payload.fuelRemainingCalculated);\nmsg.payload.costPerMileInstant = parseFloat(msg.payload.costPerMileInstant);\nmsg.payload.costPerMileTrip = parseFloat(msg.payload.costPerMileTrip);\nmsg.payload.barometerAndroid = parseFloat(msg.payload.barometerAndroid);\nmsg.payload.fuelUsedTrip = parseFloat(msg.payload.fuelUsedTrip);\nmsg.payload.tripSpeedAvg = parseFloat(msg.payload.tripSpeedAvg);\nmsg.payload.enginekWWheels = parseFloat(msg.payload.enginekWWheels);\nmsg.payload.timerFrom80to120kph = parseFloat(msg.payload.timerFrom80to120kph);\nmsg.payload.timerFrom60to130mph = parseFloat(msg.payload.timerFrom60to130mph);\nmsg.payload.timerFrom0to30mph = parseFloat(msg.payload.timerFrom0to30mph);\nmsg.payload.exhaustGasTempBank1Sensor2 = parseFloat(msg.payload.exhaustGasTempBank1Sensor2);\nmsg.payload.exhaustGasTempBank1Sensor3 = parseFloat(msg.payload.exhaustGasTempBank1Sensor3);\nmsg.payload.exhaustGasTempBank1Sensor4 = parseFloat(msg.payload.exhaustGasTempBank1Sensor4);\nmsg.payload.exhaustGasTempBank2Sensor2 = parseFloat(msg.payload.exhaustGasTempBank2Sensor2);\nmsg.payload.exhaustGasTempBank2Sensor3 = parseFloat(msg.payload.exhaustGasTempBank2Sensor3);\nmsg.payload.exhaustGasTempBank2Sensor4 = parseFloat(msg.payload.exhaustGasTempBank2Sensor4);\nmsg.payload.NOxPostSCR = parseFloat(msg.payload.NOxPostSCR);\nmsg.payload.drivingPercentCity = parseFloat(msg.payload.drivingPercentCity);\nmsg.payload.drivingPercentHighway = parseFloat(msg.payload.drivingPercentHighway);\nmsg.payload.drivingPercentIdle = parseFloat(msg.payload.drivingPercentIdle);\nmsg.payload.batteryLevelAndroid = parseFloat(msg.payload.batteryLevelAndroid);\nmsg.payload.MPGLongTermAvg = parseFloat(msg.payload.MPGLongTermAvg);\nmsg.payload.KPLLongTermAvg = parseFloat(msg.payload.KPLLongTermAvg);\nmsg.payload.LP100KMLongTermAvg = parseFloat(msg.payload.LP100KMLongTermAvg);\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "x": 940,
+        "y": 260,
+        "wires": [
+            [
+                "f8b64b5e.e7ce"
+            ]
+        ]
+    },
+    {
+        "id": "3c83039.65050fc",
+        "type": "debug",
+        "z": "1051da59.797066",
+        "name": "",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "x": 1470,
+        "y": 300,
+        "wires": []
+    },
+    {
+        "id": "84b76083.62f398",
+        "type": "inject",
+        "z": "1051da59.797066",
+        "name": "testdata",
+        "topic": "",
+        "payload": "{\"eml\":\"torquetest\",\"v\":\"8\",\"session\":\"1559309451755\",\"id\":\"282d443464cf7afc0051c57afba43006\",\"time\":\"1559313070844\",\"kff1005\":[\"-71.089996\",\"-71.089996\"],\"kff1006\":[\"42.362714\",\"42.362714\"],\"kff1001\":[\"0.0\",\"0.0\"],\"kff1007\":\"0.0\",\"k47\":\"24.313726\",\"kff1223\":\"0.01545088\",\"kff1220\":\"-0.022440217\",\"kff1221\":\"8.1349094E-4\",\"kff1222\":\"0.91485566\",\"kff124d\":\"14.08\",\"k46\":\"27.0\",\"kff129a\":\"79.0\",\"kff1272\":\"0.0\",\"kff1270\":\"1012.35156\",\"k33\":\"104.0\",\"k3c\":\"28.699997\",\"k3d\":\"28.699997\",\"k44\":\"1.0\",\"k2c\":\"0.0\",\"k2d\":\"0.0\",\"k5\":\"29.0\",\"k4\":\"0.0\",\"k43\":\"0.0\",\"kc\":\"0.0\",\"k32\":\"-34.25\",\"k2f\":\"100.0\",\"k22\":\"100.625\",\"kff1239\":\"51.456\",\"kff1010\":\"-100.840087890625\",\"kff123b\":\"0.0\",\"kff123a\":\"2.0\",\"kff1237\":\"0.0\",\"kf\":\"40.0\",\"kb\":\"104.0\",\"k10\":\"0.0\",\"kff1201\":\"512.0\",\"k45\":\"5.882353\",\"k1f\":\"0.0\",\"kd\":\"0.0\",\"k11\":\"18.431374\",\"ke\":\"10.0\",\"kff1205\":\"0.0\",\"kff1202\":\"0.0\",\"k42\":\"12.109\",\"kff1238\":\"12.4\"}",
+        "payloadType": "json",
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "x": 190,
+        "y": 300,
+        "wires": [
+            [
+                "8b6d2f73.79c94"
+            ]
+        ]
+    },
+    {
+        "id": "19625f35.0e6039",
+        "type": "moment",
+        "z": "1051da59.797066",
+        "name": "",
+        "topic": "",
+        "input": "payload.session",
+        "inputType": "msg",
+        "inTz": "ETC/GMT",
+        "adjAmount": 0,
+        "adjType": "days",
+        "adjDir": "add",
+        "format": "LLL",
+        "locale": "POSIX",
+        "output": "payload.session",
+        "outputType": "msg",
+        "outTz": "America/New_York",
+        "x": 1280,
+        "y": 260,
+        "wires": [
+            [
+                "3c87de8f.38df52",
+                "3c83039.65050fc"
+            ]
+        ]
+    },
+    {
+        "id": "d70fbc90.23d5c",
+        "type": "change",
+        "z": "1051da59.797066",
+        "name": "Rename PIDs",
+        "rules": [
+            {
+                "t": "move",
+                "p": "payload.k10",
+                "pt": "msg",
+                "to": "payload.MAFR",
+                "tot": "msg"
+            },
+            {
+                "t": "move",
+                "p": "payload.k11",
+                "pt": "msg",
+                "to": "payload.throttlePosManifold",
+                "tot": "msg"
+            },
+            {
+                "t": "move",
+                "p": "payload.k12",
+                "pt": "msg",
+                "to": "payload.airStatus",
+                "tot": "msg"
+            },
+            {
+                "t": "move",
+                "p": "payload.k14",
+                "pt": "msg",
+                "to": "payload.fuelTrimBank1Sensor1",
+                "tot": "msg"
+            },
+            {
+                "t": "move",
+                "p": "payload.k15",
+                "pt": "msg",
+                "to": "payload.fuelTrimBank1Sensor2",
+                "tot": "msg"
+            },
+            {
+                "t": "move",
+                "p": "payload.k16",
+                "pt": "msg",
+                "to": "payload.fuelTrimBank1Sensor3",
+                "tot": "msg"
+            },
+            {
+                "t": "move",
+                "p": "payload.k17",
+                "pt": "msg",
+                "to": "payload.fuelTrimBank1Sensor4",
+                "tot": "msg"
+            },
+            {
+                "t": "move",
+                "p": "payload.k18",
+                "pt": "msg",
+                "to": "payload.fuelTrimBank2Sensor1",
+                "tot": "msg"
+            },
+            {
+                "t": "move",
+                "p": "payload.k19",
+                "pt": "msg",
+                "to": "payload.fuelTrimBank2Sensor2",
+                "tot": "msg"
+            },
+            {
+                "t": "move",
+                "p": "payload.k1a",
+                "pt": "msg",
+                "to": "payload.fuelTrimBank2Sensor3",
+                "tot": "msg"
+            },
+            {
+                "t": "move",
+                "p": "payload.k1b",
+                "pt": "msg",
+                "to": "payload.fuelTrimBank2Sensor4",
+                "tot": "msg"
+            },
+            {
+                "t": "move",
+                "p": "payload.k1f",
+                "pt": "msg",
+                "to": "payload.runTime",
+                "tot": "msg"
+            },
+            {
+                "t": "move",
+                "p": "payload.k21",
+                "pt": "msg",
+                "to": "payload.distTraveledWithCELLit",
+                "tot": "msg"
+            },
+            {
+                "t": "move",
+                "p": "payload.k22",
+                "pt": "msg",
+                "to": "payload.fuelRailPressureManifoldVacuumRelative",
+                "tot": "msg"
+            },
+            {
+                "t": "move",
+                "p": "payload.k23",
+                "pt": "msg",
+                "to": "payload.fuelRailPressure",
+                "tot": "msg"
+            },
+            {
+                "t": "move",
+                "p": "payload.k24",
+                "pt": "msg",
+                "to": "payload.O2SensorEquivalenceRatio1",
+                "tot": "msg"
+            },
+            {
+                "t": "move",
+                "p": "payload.k25",
+                "pt": "msg",
+                "to": "payload.O2SensorEquivalenceRatio2",
+                "tot": "msg"
+            },
+            {
+                "t": "move",
+                "p": "payload.k26",
+                "pt": "msg",
+                "to": "payload.O2SensorEquivalenceRatio3",
+                "tot": "msg"
+            },
+            {
+                "t": "move",
+                "p": "payload.k27",
+                "pt": "msg",
+                "to": "payload.O2SensorEquivalenceRatio4",
+                "tot": "msg"
+            },
+            {
+                "t": "move",
+                "p": "payload.k28",
+                "pt": "msg",
+                "to": "payload.O2SensorEquivalenceRatio5",
+                "tot": "msg"
+            },
+            {
+                "t": "move",
+                "p": "payload.k29",
+                "pt": "msg",
+                "to": "payload.O2SensorEquivalenceRatio6",
+                "tot": "msg"
+            },
+            {
+                "t": "move",
+                "p": "payload.k2a",
+                "pt": "msg",
+                "to": "payload.O2SensorEquivalenceRatio7",
+                "tot": "msg"
+            },
+            {
+                "t": "move",
+                "p": "payload.k2b",
+                "pt": "msg",
+                "to": "payload.O2SensorEquivalenceRatio8",
+                "tot": "msg"
+            },
+            {
+                "t": "move",
+                "p": "payload.k2c",
+                "pt": "msg",
+                "to": "payload.EGRCommanded",
+                "tot": "msg"
+            },
+            {
+                "t": "move",
+                "p": "payload.k2d",
+                "pt": "msg",
+                "to": "payload.EGRError",
+                "tot": "msg"
+            },
+            {
+                "t": "move",
+                "p": "payload.k2f",
+                "pt": "msg",
+                "to": "payload.fuelLevelFromECU",
+                "tot": "msg"
+            },
+            {
+                "t": "move",
+                "p": "payload.k3",
+                "pt": "msg",
+                "to": "payload.fuelStatus",
+                "tot": "msg"
+            },
+            {
+                "t": "move",
+                "p": "payload.k31",
+                "pt": "msg",
+                "to": "payload.distTraveledSinceCodesCleared",
+                "tot": "msg"
+            },
+            {
+                "t": "move",
+                "p": "payload.k32",
+                "pt": "msg",
+                "to": "payload.evapSysVaporPressure",
+                "tot": "msg"
+            },
+            {
+                "t": "move",
+                "p": "payload.k33",
+                "pt": "msg",
+                "to": "payload.barometerVehicle",
+                "tot": "msg"
+            },
+            {
+                "t": "move",
+                "p": "payload.k34",
+                "pt": "msg",
+                "to": "payload.O2SensorEquivalenceRatioAlternate1",
+                "tot": "msg"
+            },
+            {
+                "t": "move",
+                "p": "payload.k3c",
+                "pt": "msg",
+                "to": "payload.catalystTempBank1Sensor1",
+                "tot": "msg"
+            },
+            {
+                "t": "move",
+                "p": "payload.k3d",
+                "pt": "msg",
+                "to": "payload.catalystTempBank2Sensor1",
+                "tot": "msg"
+            },
+            {
+                "t": "move",
+                "p": "payload.k3e",
+                "pt": "msg",
+                "to": "payload.catalystTempBank1Sensor2",
+                "tot": "msg"
+            },
+            {
+                "t": "move",
+                "p": "payload.k3f",
+                "pt": "msg",
+                "to": "payload.catalystTempBank2Sensor2",
+                "tot": "msg"
+            },
+            {
+                "t": "move",
+                "p": "payload.k4",
+                "pt": "msg",
+                "to": "payload.engineLoad",
+                "tot": "msg"
+            },
+            {
+                "t": "move",
+                "p": "payload.k42",
+                "pt": "msg",
+                "to": "payload.voltageControlModule",
+                "tot": "msg"
+            },
+            {
+                "t": "move",
+                "p": "payload.k43",
+                "pt": "msg",
+                "to": "payload.engineLoadAbsolute",
+                "tot": "msg"
+            },
+            {
+                "t": "move",
+                "p": "payload.k44",
+                "pt": "msg",
+                "to": "payload.commandedEquivalenceRatioLambda",
+                "tot": "msg"
+            },
+            {
+                "t": "move",
+                "p": "payload.k45",
+                "pt": "msg",
+                "to": "payload.throttlePositionRelative",
+                "tot": "msg"
+            },
+            {
+                "t": "move",
+                "p": "payload.k46",
+                "pt": "msg",
+                "to": "payload.ambientAirTemp",
+                "tot": "msg"
+            },
+            {
+                "t": "move",
+                "p": "payload.k47",
+                "pt": "msg",
+                "to": "payload.throttlePositionAbsoluteB",
+                "tot": "msg"
+            },
+            {
+                "t": "move",
+                "p": "payload.k49",
+                "pt": "msg",
+                "to": "payload.acceleratorPedalPositionD",
+                "tot": "msg"
+            },
+            {
+                "t": "move",
+                "p": "payload.k4a",
+                "pt": "msg",
+                "to": "payload.acceleratorPedalPositionE",
+                "tot": "msg"
+            },
+            {
+                "t": "move",
+                "p": "payload.k4b",
+                "pt": "msg",
+                "to": "payload.acceleratorPedalPositionF",
+                "tot": "msg"
+            },
+            {
+                "t": "move",
+                "p": "payload.k5",
+                "pt": "msg",
+                "to": "payload.engineCoolantTemp",
+                "tot": "msg"
+            },
+            {
+                "t": "move",
+                "p": "payload.k5a",
+                "pt": "msg",
+                "to": "payload.acceleratorPedalPositionRelative",
+                "tot": "msg"
+            },
+            {
+                "t": "move",
+                "p": "payload.k52",
+                "pt": "msg",
+                "to": "payload.ethanolFuelPercent",
+                "tot": "msg"
+            },
+            {
+                "t": "move",
+                "p": "payload.k5a",
+                "pt": "msg",
+                "to": "payload.relativeAcceleratorPedalPosition",
+                "tot": "msg"
+            },
+            {
+                "t": "move",
+                "p": "payload.k5b",
+                "pt": "msg",
+                "to": "payload.hybridBatteryCharge",
+                "tot": "msg"
+            },
+            {
+                "t": "move",
+                "p": "payload.k5c",
+                "pt": "msg",
+                "to": "payload.engineOilTemp",
+                "tot": "msg"
+            },
+            {
+                "t": "move",
+                "p": "payload.k6",
+                "pt": "msg",
+                "to": "payload.fuelTrimShortTermbank1",
+                "tot": "msg"
+            },
+            {
+                "t": "move",
+                "p": "payload.k61",
+                "pt": "msg",
+                "to": "payload.torqueDemanded",
+                "tot": "msg"
+            },
+            {
+                "t": "move",
+                "p": "payload.k62",
+                "pt": "msg",
+                "to": "payload.torqueActual",
+                "tot": "msg"
+            },
+            {
+                "t": "move",
+                "p": "payload.k62",
+                "pt": "msg",
+                "to": "payload.torqueReference",
+                "tot": "msg"
+            },
+            {
+                "t": "move",
+                "p": "payload.k7",
+                "pt": "msg",
+                "to": "payload.fuelTrimLongTermBank1",
+                "tot": "msg"
+            },
+            {
+                "t": "move",
+                "p": "payload.k70",
+                "pt": "msg",
+                "to": "payload.turboPressureControl",
+                "tot": "msg"
+            },
+            {
+                "t": "move",
+                "p": "payload.k73",
+                "pt": "msg",
+                "to": "payload.exhaustPressure",
+                "tot": "msg"
+            },
+            {
+                "t": "move",
+                "p": "payload.k77",
+                "pt": "msg",
+                "to": "payload.chargeAirCoolerTemp",
+                "tot": "msg"
+            },
+            {
+                "t": "move",
+                "p": "payload.k78",
+                "pt": "msg",
+                "to": "payload.exhaustGasTempBank1Sensor1",
+                "tot": "msg"
+            },
+            {
+                "t": "move",
+                "p": "payload.k79",
+                "pt": "msg",
+                "to": "payload.exhaustGasTempBank2Sensor1",
+                "tot": "msg"
+            },
+            {
+                "t": "move",
+                "p": "payload.k7a",
+                "pt": "msg",
+                "to": "payload.DPFPressure",
+                "tot": "msg"
+            },
+            {
+                "t": "move",
+                "p": "payload.k7c",
+                "pt": "msg",
+                "to": "payload.DPFTemp",
+                "tot": "msg"
+            },
+            {
+                "t": "move",
+                "p": "payload.k8",
+                "pt": "msg",
+                "to": "payload.fuelTrimShortTermBank2",
+                "tot": "msg"
+            },
+            {
+                "t": "move",
+                "p": "payload.k83",
+                "pt": "msg",
+                "to": "payload.NOxPreSCR",
+                "tot": "msg"
+            },
+            {
+                "t": "move",
+                "p": "payload.k9",
+                "pt": "msg",
+                "to": "payload.fuelTrimLongTermBank2",
+                "tot": "msg"
+            },
+            {
+                "t": "move",
+                "p": "payload.ka",
+                "pt": "msg",
+                "to": "payload.fuelPressure",
+                "tot": "msg"
+            },
+            {
+                "t": "move",
+                "p": "payload.kb",
+                "pt": "msg",
+                "to": "payload.intakeManifoldPressure",
+                "tot": "msg"
+            },
+            {
+                "t": "move",
+                "p": "payload.kb4",
+                "pt": "msg",
+                "to": "payload.transmissionTempMethod2",
+                "tot": "msg"
+            },
+            {
+                "t": "move",
+                "p": "payload.kc",
+                "pt": "msg",
+                "to": "payload.engineRPM",
+                "tot": "msg"
+            },
+            {
+                "t": "move",
+                "p": "payload.kd",
+                "pt": "msg",
+                "to": "payload.speedOBD",
+                "tot": "msg"
+            },
+            {
+                "t": "move",
+                "p": "payload.ke",
+                "pt": "msg",
+                "to": "payload.timingAdvance",
+                "tot": "msg"
+            },
+            {
+                "t": "move",
+                "p": "payload.kf",
+                "pt": "msg",
+                "to": "payload.intakeAirTemp",
+                "tot": "msg"
+            },
+            {
+                "t": "move",
+                "p": "payload.kfe1805",
+                "pt": "msg",
+                "to": "payload.transmissionTempMethod1",
+                "tot": "msg"
+            },
+            {
+                "t": "move",
+                "p": "payload.kff1001",
+                "pt": "msg",
+                "to": "payload.GPSSpeed",
+                "tot": "msg"
+            },
+            {
+                "t": "move",
+                "p": "payload.kff1005",
+                "pt": "msg",
+                "to": "payload.GPSLongitude",
+                "tot": "msg"
+            },
+            {
+                "t": "move",
+                "p": "payload.kff1006",
+                "pt": "msg",
+                "to": "payload.GPSLatitude",
+                "tot": "msg"
+            },
+            {
+                "t": "move",
+                "p": "payload.kff1007",
+                "pt": "msg",
+                "to": "payload.GPSBearing1",
+                "tot": "msg"
+            },
+            {
+                "t": "move",
+                "p": "payload.kff1010",
+                "pt": "msg",
+                "to": "payload.GPSAltitude",
+                "tot": "msg"
+            },
+            {
+                "t": "move",
+                "p": "payload.kff1201",
+                "pt": "msg",
+                "to": "payload.MPGInstant",
+                "tot": "msg"
+            },
+            {
+                "t": "move",
+                "p": "payload.kff1202",
+                "pt": "msg",
+                "to": "payload.turboBoostandVac",
+                "tot": "msg"
+            },
+            {
+                "t": "move",
+                "p": "payload.kff1203",
+                "pt": "msg",
+                "to": "payload.KPLInstant",
+                "tot": "msg"
+            },
+            {
+                "t": "move",
+                "p": "payload.kff1204",
+                "pt": "msg",
+                "to": "payload.tripDistance",
+                "tot": "msg"
+            },
+            {
+                "t": "move",
+                "p": "payload.kff1205",
+                "pt": "msg",
+                "to": "payload.MPGtripAvg",
+                "tot": "msg"
+            },
+            {
+                "t": "move",
+                "p": "payload.kff1206",
+                "pt": "msg",
+                "to": "payload.KPLtripAvg",
+                "tot": "msg"
+            },
+            {
+                "t": "move",
+                "p": "payload.kff1207",
+                "pt": "msg",
+                "to": "payload.LP100KMInstant",
+                "tot": "msg"
+            },
+            {
+                "t": "move",
+                "p": "payload.kff1208",
+                "pt": "msg",
+                "to": "payload.LP100KMtripAvg",
+                "tot": "msg"
+            },
+            {
+                "t": "move",
+                "p": "payload.kff120c",
+                "pt": "msg",
+                "to": "payload.tripDistanceVehicleProfile",
+                "tot": "msg"
+            },
+            {
+                "t": "move",
+                "p": "payload.kff1214",
+                "pt": "msg",
+                "to": "payload.O2VoltsBank1Sensor1",
+                "tot": "msg"
+            },
+            {
+                "t": "move",
+                "p": "payload.kff1215",
+                "pt": "msg",
+                "to": "payload.O2VoltsBank1Sensor2",
+                "tot": "msg"
+            },
+            {
+                "t": "move",
+                "p": "payload.kff1216",
+                "pt": "msg",
+                "to": "payload.O2VoltsBank1Sensor3",
+                "tot": "msg"
+            },
+            {
+                "t": "move",
+                "p": "payload.kff1217",
+                "pt": "msg",
+                "to": "payload.O2VoltsBank1Sensor4",
+                "tot": "msg"
+            },
+            {
+                "t": "move",
+                "p": "payload.kff1218",
+                "pt": "msg",
+                "to": "payload.O2VoltsBank2Sensor1",
+                "tot": "msg"
+            },
+            {
+                "t": "move",
+                "p": "payload.kff1219",
+                "pt": "msg",
+                "to": "payload.O2VoltsBank2Sensor2",
+                "tot": "msg"
+            },
+            {
+                "t": "move",
+                "p": "payload.kff121a",
+                "pt": "msg",
+                "to": "payload.O2VoltsBank2Sensor3",
+                "tot": "msg"
+            },
+            {
+                "t": "move",
+                "p": "payload.kff121b",
+                "pt": "msg",
+                "to": "payload.O2VoltsBank2Sensor4",
+                "tot": "msg"
+            },
+            {
+                "t": "move",
+                "p": "payload.kff1220",
+                "pt": "msg",
+                "to": "payload.accelerationX",
+                "tot": "msg"
+            },
+            {
+                "t": "move",
+                "p": "payload.kff1221",
+                "pt": "msg",
+                "to": "payload.accelerationY",
+                "tot": "msg"
+            },
+            {
+                "t": "move",
+                "p": "payload.kff1222",
+                "pt": "msg",
+                "to": "payload.accelerationZ",
+                "tot": "msg"
+            },
+            {
+                "t": "move",
+                "p": "payload.kff1223",
+                "pt": "msg",
+                "to": "payload.accelerationTot",
+                "tot": "msg"
+            },
+            {
+                "t": "move",
+                "p": "payload.kff1225",
+                "pt": "msg",
+                "to": "payload.torqueCalculated",
+                "tot": "msg"
+            },
+            {
+                "t": "move",
+                "p": "payload.kff1226",
+                "pt": "msg",
+                "to": "payload.horsepowerWheels",
+                "tot": "msg"
+            },
+            {
+                "t": "move",
+                "p": "payload.kff122d",
+                "pt": "msg",
+                "to": "payload.timerFrom0to60mph",
+                "tot": "msg"
+            },
+            {
+                "t": "move",
+                "p": "payload.kff122e",
+                "pt": "msg",
+                "to": "payload.timerFrom0to100kph",
+                "tot": "msg"
+            },
+            {
+                "t": "move",
+                "p": "payload.kff122f",
+                "pt": "msg",
+                "to": "payload.timerQuarterMile",
+                "tot": "msg"
+            },
+            {
+                "t": "move",
+                "p": "payload.kff1230",
+                "pt": "msg",
+                "to": "payload.timerEighthMile",
+                "tot": "msg"
+            },
+            {
+                "t": "move",
+                "p": "payload.kff1237",
+                "pt": "msg",
+                "to": "payload.GPSvsOBDSpeedDiff",
+                "tot": "msg"
+            },
+            {
+                "t": "move",
+                "p": "payload.kff1238",
+                "pt": "msg",
+                "to": "payload.voltageOBDAdapter",
+                "tot": "msg"
+            },
+            {
+                "t": "move",
+                "p": "payload.kff1239",
+                "pt": "msg",
+                "to": "payload.GPSAccuracy",
+                "tot": "msg"
+            },
+            {
+                "t": "move",
+                "p": "payload.kff123a",
+                "pt": "msg",
+                "to": "payload.GPSSatellites",
+                "tot": "msg"
+            },
+            {
+                "t": "move",
+                "p": "payload.kff123b",
+                "pt": "msg",
+                "to": "payload.GPSBearing2",
+                "tot": "msg"
+            },
+            {
+                "t": "move",
+                "p": "payload.kff1240",
+                "pt": "msg",
+                "to": "payload.O2VoltsWideRangeSensor1",
+                "tot": "msg"
+            },
+            {
+                "t": "move",
+                "p": "payload.kff1241",
+                "pt": "msg",
+                "to": "payload.O2VoltsWideRangeSensor2",
+                "tot": "msg"
+            },
+            {
+                "t": "move",
+                "p": "payload.kff1242",
+                "pt": "msg",
+                "to": "payload.O2VoltsWideRangeSensor3",
+                "tot": "msg"
+            },
+            {
+                "t": "move",
+                "p": "payload.kff1243",
+                "pt": "msg",
+                "to": "payload.O2VoltsWideRangeSensor4",
+                "tot": "msg"
+            },
+            {
+                "t": "move",
+                "p": "payload.kff1244",
+                "pt": "msg",
+                "to": "payload.O2VoltsWideRangeSensor5",
+                "tot": "msg"
+            },
+            {
+                "t": "move",
+                "p": "payload.kff1245",
+                "pt": "msg",
+                "to": "payload.O2VoltsWideRangeSensor6",
+                "tot": "msg"
+            },
+            {
+                "t": "move",
+                "p": "payload.kff1246",
+                "pt": "msg",
+                "to": "payload.O2VoltsWideRangeSensor7",
+                "tot": "msg"
+            },
+            {
+                "t": "move",
+                "p": "payload.kff1247",
+                "pt": "msg",
+                "to": "payload.O2VoltsWideRangeSensor8",
+                "tot": "msg"
+            },
+            {
+                "t": "move",
+                "p": "payload.kff1249",
+                "pt": "msg",
+                "to": "payload.airFuelRatioMeasured",
+                "tot": "msg"
+            },
+            {
+                "t": "move",
+                "p": "payload.kff124a",
+                "pt": "msg",
+                "to": "payload.tiltX",
+                "tot": "msg"
+            },
+            {
+                "t": "move",
+                "p": "payload.kff124b",
+                "pt": "msg",
+                "to": "payload.tiltY",
+                "tot": "msg"
+            },
+            {
+                "t": "move",
+                "p": "payload.kff124c",
+                "pt": "msg",
+                "to": "payload.tiltZ",
+                "tot": "msg"
+            },
+            {
+                "t": "move",
+                "p": "payload.kff124d",
+                "pt": "msg",
+                "to": "payload.airFuelRatioCommanded",
+                "tot": "msg"
+            },
+            {
+                "t": "move",
+                "p": "payload.kff124f",
+                "pt": "msg",
+                "to": "payload.timerFrom0to200kph",
+                "tot": "msg"
+            },
+            {
+                "t": "move",
+                "p": "payload.kff1257",
+                "pt": "msg",
+                "to": "payload.CO2Instant",
+                "tot": "msg"
+            },
+            {
+                "t": "move",
+                "p": "payload.kff1258",
+                "pt": "msg",
+                "to": "payload.CO2Avg",
+                "tot": "msg"
+            },
+            {
+                "t": "move",
+                "p": "payload.kff125a",
+                "pt": "msg",
+                "to": "payload.fuelFlowRatePerMin",
+                "tot": "msg"
+            },
+            {
+                "t": "move",
+                "p": "payload.kff125c",
+                "pt": "msg",
+                "to": "payload.fuelCostTrip",
+                "tot": "msg"
+            },
+            {
+                "t": "move",
+                "p": "payload.kff125d",
+                "pt": "msg",
+                "to": "payload.fuelFlowRatePerHour",
+                "tot": "msg"
+            },
+            {
+                "t": "move",
+                "p": "payload.kff125e",
+                "pt": "msg",
+                "to": "payload.timerFrom60to120mph",
+                "tot": "msg"
+            },
+            {
+                "t": "move",
+                "p": "payload.kff125f",
+                "pt": "msg",
+                "to": "payload.timerFrom60to80mph",
+                "tot": "msg"
+            },
+            {
+                "t": "move",
+                "p": "payload.kff1260",
+                "pt": "msg",
+                "to": "payload.timerFrom40to60mph",
+                "tot": "msg"
+            },
+            {
+                "t": "move",
+                "p": "payload.kff1261",
+                "pt": "msg",
+                "to": "payload.timerFrom80to100mph",
+                "tot": "msg"
+            },
+            {
+                "t": "move",
+                "p": "payload.kff1263",
+                "pt": "msg",
+                "to": "payload.tripSpeedAvgWhileMoving",
+                "tot": "msg"
+            },
+            {
+                "t": "move",
+                "p": "payload.kff1264",
+                "pt": "msg",
+                "to": "payload.timerFrom100to0kph",
+                "tot": "msg"
+            },
+            {
+                "t": "move",
+                "p": "payload.kff1265",
+                "pt": "msg",
+                "to": "payload.timerFrom60to0mph",
+                "tot": "msg"
+            },
+            {
+                "t": "move",
+                "p": "payload.kff1266",
+                "pt": "msg",
+                "to": "payload.timerSinceJourneyStart",
+                "tot": "msg"
+            },
+            {
+                "t": "move",
+                "p": "payload.kff1267",
+                "pt": "msg",
+                "to": "payload.timerStationary",
+                "tot": "msg"
+            },
+            {
+                "t": "move",
+                "p": "payload.kff1268",
+                "pt": "msg",
+                "to": "payload.timerMoving",
+                "tot": "msg"
+            },
+            {
+                "t": "move",
+                "p": "payload.kff1269",
+                "pt": "msg",
+                "to": "payload.volumetricEfficiencyCalculated",
+                "tot": "msg"
+            },
+            {
+                "t": "move",
+                "p": "payload.kff126a",
+                "pt": "msg",
+                "to": "payload.distanceToEmptyCalculated",
+                "tot": "msg"
+            },
+            {
+                "t": "move",
+                "p": "payload.kff126b",
+                "pt": "msg",
+                "to": "payload.fuelRemainingCalculated",
+                "tot": "msg"
+            },
+            {
+                "t": "move",
+                "p": "payload.kff126d",
+                "pt": "msg",
+                "to": "payload.costPerMileInstant",
+                "tot": "msg"
+            },
+            {
+                "t": "move",
+                "p": "payload.kff126e",
+                "pt": "msg",
+                "to": "payload.costPerMileTrip",
+                "tot": "msg"
+            },
+            {
+                "t": "move",
+                "p": "payload.kff1270",
+                "pt": "msg",
+                "to": "payload.barometerAndroid",
+                "tot": "msg"
+            },
+            {
+                "t": "move",
+                "p": "payload.kff1271",
+                "pt": "msg",
+                "to": "payload.fuelUsedTrip",
+                "tot": "msg"
+            },
+            {
+                "t": "move",
+                "p": "payload.kff1272",
+                "pt": "msg",
+                "to": "payload.tripSpeedAvg",
+                "tot": "msg"
+            },
+            {
+                "t": "move",
+                "p": "payload.kff1273",
+                "pt": "msg",
+                "to": "payload.enginekWWheels",
+                "tot": "msg"
+            },
+            {
+                "t": "move",
+                "p": "payload.kff1275",
+                "pt": "msg",
+                "to": "payload.timerFrom80to120kph",
+                "tot": "msg"
+            },
+            {
+                "t": "move",
+                "p": "payload.kff1276",
+                "pt": "msg",
+                "to": "payload.timerFrom60to130mph",
+                "tot": "msg"
+            },
+            {
+                "t": "move",
+                "p": "payload.kff1277",
+                "pt": "msg",
+                "to": "payload.timerFrom0to30mph",
+                "tot": "msg"
+            },
+            {
+                "t": "move",
+                "p": "payload.k1282",
+                "pt": "msg",
+                "to": "payload.exhaustGasTempBank1Sensor2",
+                "tot": "msg"
+            },
+            {
+                "t": "move",
+                "p": "payload.k1283",
+                "pt": "msg",
+                "to": "payload.exhaustGasTempBank1Sensor3",
+                "tot": "msg"
+            },
+            {
+                "t": "move",
+                "p": "payload.k1284",
+                "pt": "msg",
+                "to": "payload.exhaustGasTempBank1Sensor4",
+                "tot": "msg"
+            },
+            {
+                "t": "move",
+                "p": "payload.k1286",
+                "pt": "msg",
+                "to": "payload.exhaustGasTempBank2Sensor2",
+                "tot": "msg"
+            },
+            {
+                "t": "move",
+                "p": "payload.k1287",
+                "pt": "msg",
+                "to": "payload.exhaustGasTempBank2Sensor3",
+                "tot": "msg"
+            },
+            {
+                "t": "move",
+                "p": "payload.k1288",
+                "pt": "msg",
+                "to": "payload.exhaustGasTempBank2Sensor4",
+                "tot": "msg"
+            },
+            {
+                "t": "move",
+                "p": "payload.k128a",
+                "pt": "msg",
+                "to": "payload.NOxPostSCR",
+                "tot": "msg"
+            },
+            {
+                "t": "move",
+                "p": "payload.k1296",
+                "pt": "msg",
+                "to": "payload.drivingPercentCity",
+                "tot": "msg"
+            },
+            {
+                "t": "move",
+                "p": "payload.k1297",
+                "pt": "msg",
+                "to": "payload.drivingPercentHighway",
+                "tot": "msg"
+            },
+            {
+                "t": "move",
+                "p": "payload.k1298",
+                "pt": "msg",
+                "to": "payload.drivingPercentIdle",
+                "tot": "msg"
+            },
+            {
+                "t": "move",
+                "p": "payload.kff129a",
+                "pt": "msg",
+                "to": "payload.batteryLevelAndroid",
+                "tot": "msg"
+            },
+            {
+                "t": "move",
+                "p": "payload.kff5201",
+                "pt": "msg",
+                "to": "payload.MPGLongTermAvg",
+                "tot": "msg"
+            },
+            {
+                "t": "move",
+                "p": "payload.kff5202",
+                "pt": "msg",
+                "to": "payload.KPLLongTermAvg",
+                "tot": "msg"
+            },
+            {
+                "t": "move",
+                "p": "payload.kff5203",
+                "pt": "msg",
+                "to": "payload.LP100KMLongTermAvg",
+                "tot": "msg"
+            },
+            {
+                "t": "move",
+                "p": "payload.v",
+                "pt": "msg",
+                "to": "payload.appVersion",
+                "tot": "msg"
+            },
+            {
+                "t": "move",
+                "p": "payload.id",
+                "pt": "msg",
+                "to": "payload.appID_MD5",
+                "tot": "msg"
+            },
+            {
+                "t": "move",
+                "p": "payload.eml",
+                "pt": "msg",
+                "to": "payload.appID_userEntered",
+                "tot": "msg"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 580,
+        "y": 260,
+        "wires": [
+            [
+                "861b3377.410e3"
+            ]
+        ]
+    },
+    {
+        "id": "3c87de8f.38df52",
+        "type": "change",
+        "z": "1051da59.797066",
+        "name": "",
+        "rules": [
+            {
+                "t": "set",
+                "p": "topic",
+                "pt": "msg",
+                "to": "torque/formatted",
+                "tot": "str"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 1470,
+        "y": 260,
+        "wires": [
+            [
+                "ffec7c10.fa3d6"
+            ]
+        ]
+    },
+    {
+        "id": "f8b64b5e.e7ce",
+        "type": "function",
+        "z": "1051da59.797066",
+        "name": "remove nulls",
+        "func": "//Object.keys(msg.payload).forEach((k) => (!msg.payload[k] && msg.payload[k] !== undefined) && delete msg.payload[k]);\n\n\nfor (var propName in msg.payload)\n{ \n    if (msg.payload[propName] === null || msg.payload[propName] === undefined || (isNaN(msg.payload[propName] && typeof msg.payload[propName] !== 'string')))\n    {\n      delete msg.payload[propName];\n    }\n}\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "x": 1090,
+        "y": 260,
+        "wires": [
+            [
+                "19625f35.0e6039"
+            ]
+        ]
+    },
+    {
+        "id": "cf272a44.fc08b",
+        "type": "delay",
+        "z": "1051da59.797066",
+        "name": "",
+        "pauseType": "rate",
+        "timeout": "5",
+        "timeoutUnits": "seconds",
+        "rate": "1",
+        "nbRateUnits": "1",
+        "rateUnits": "second",
+        "randomFirst": "1",
+        "randomLast": "5",
+        "randomUnits": "seconds",
+        "drop": true,
+        "x": 190,
+        "y": 100,
+        "wires": [
+            [
+                "d3c7f0f6.360e",
+                "b043ff20.449ac8",
+                "8b6d2f73.79c94"
+            ]
+        ]
+    },
+    {
+        "id": "861b3377.410e3",
+        "type": "function",
+        "z": "1051da59.797066",
+        "name": "set default ID",
+        "func": "if (msg.payload.appID_userEntered === undefined)\n{\n   msg.payload.appID_userEntered = 'liteVersion'; \n}\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "x": 780,
+        "y": 260,
+        "wires": [
+            [
+                "52b74919.1194b8"
+            ]
+        ]
+    },
+    {
+        "id": "56a849d2.194a68",
+        "type": "mqtt-broker",
+        "z": "",
+        "name": "Mosquitto",
+        "broker": "host",
+        "port": "port",
+        "tls": "9f91046e.e850e8",
+        "clientid": "node-red",
+        "usetls": false,
+        "compatmode": true,
+        "keepalive": "60",
+        "cleansession": true,
+        "birthTopic": "",
+        "birthQos": "0",
+        "birthPayload": "",
+        "closeTopic": "",
+        "closeQos": "0",
+        "closePayload": "",
+        "willTopic": "",
+        "willQos": "0",
+        "willPayload": ""
+    },
+    {
+        "id": "9f91046e.e850e8",
+        "type": "tls-config",
+        "z": "",
+        "name": "",
+        "cert": "",
+        "key": "",
+        "ca": "",
+        "certname": "",
+        "keyname": "",
+        "caname": "",
+        "servername": "",
+        "verifyservercert": true
+    }
+]
