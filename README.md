@@ -53,4 +53,4 @@ The Torque app does not support sending data over HTTPS, so HTTPS access to your
 
 * Expose your Node-RED HTTP endpoint to the internet, using port forwarding/reverse proxy (Not recommended). 
 
-* Use a VPN to create a secure connection to the network that has your server. I use Wireguard for this, but that setup is otuside the scope of this documentation.
+* Use a VPN to create a secure connection to the network that has your server. I use [Wireguard](https://www.wireguard.com/) for this, but that set up is outside the scope of this documentation.
