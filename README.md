@@ -41,7 +41,7 @@ This works with both the paid and free versions of Torque. The free version is l
 
 1. Navigate to the app settings and enable "Upload to webserver".
 
-2. Enter the address of your Node-RED instance in the webserver URL field. Default is `http://<ip address>:<port>/upload`. This will change due to reverse proxy settings, domain names, dynamic DNS, etc.
+2. Enter the address of your Node-RED instance in the webserver URL field. Default is `http://<ip address>:<port>/upload`. This will change due to port forwarding, reverse proxy settings, domain names, dynamic DNS, etc.
 
 3. Select which PIDs to log.
 
@@ -53,4 +53,4 @@ The Torque app does not support sending data over HTTPS, so HTTPS access to your
 
 * Expose your Node-RED HTTP endpoint to the internet, using port forwarding/reverse proxy (Not recommended). 
 
-* Use a VPN to create a secure connection to the network that has your server.
+* Use a VPN to create a secure connection to the network that has your server. I use Wireguard for this, but that setup is otuside the scope of this documentation.
