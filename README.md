@@ -19,7 +19,7 @@ A Node-RED flow for capturing data sent from the Torque OBDII app and creating a
 
 3. InfluxDB for storing metrics.
 
-4. Grafana for viewing data.
+4. Grafana for viewing data. JHenzi made an [awesome dashboard](https://github.com/JHenzi/Torque-Grafana-Dashboard)!
 
 ## Installation
 
